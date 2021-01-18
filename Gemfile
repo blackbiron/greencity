@@ -33,10 +33,14 @@ gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'devise'
 gem 'geocoder'
+gem 'paranoia'
 gem 'rolify'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'slim-rails'
+gem 'iso_country_codes'
+gem 'simple_form'
+gem 'friendly_id'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,6 +57,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rubocop-rails'
   gem 'spring'
+  gem 'awesome_print'
 end
 
 group :test do

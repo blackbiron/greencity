@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-class Frontend::HomeController < FrontendController
-  def index; end
+module Frontend
+  class HomeController < FrontendController
+    def index; end
+  end
 end

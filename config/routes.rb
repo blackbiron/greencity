@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   root to: 'frontend/home#index'
 
   scope module: 'frontend' do
-    resources :posts
+    resources :countries, path: '', only: :show do
+      resources :cities, path: '', only: :show do
+        resources :posts
+      end
+    end
   end
 
   namespace :backend, path: 'admin' do
