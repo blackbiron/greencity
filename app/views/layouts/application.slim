@@ -1,0 +1,25 @@
+doctype html
+
+html
+  head
+    title Greencity
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  body
+    = link_to 'post pictures'
+
+    | Choose your city
+    = select_tag 'city', options_from_collection_for_select(City.all, 'slug', 'name'), { include_blank: false, selected: cookies[:city] }
+
+    = yield
+
+    javascript:
+      $('#city').on('change', function() {
+          var url = $(this).val();
+          location.href = url;
+      });

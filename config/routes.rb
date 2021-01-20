@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   root to: 'frontend/home#index'
 
   scope module: 'frontend' do
-    resources :countries, path: '', only: :show do
-      resources :cities, path: '', only: :show do
+    resources :countries, path: '', param: :user_country, only: :show do
+      resources :cities, path: '', param: :user_city, only: :show do
         resources :posts
       end
     end
