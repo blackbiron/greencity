@@ -14,7 +14,7 @@ html
     = link_to 'post pictures'
 
     | Choose your city
-    = select_tag 'city', options_from_collection_for_select(City.all, 'slug', 'name'), { include_blank: false, selected: cookies[:city] }
+    = select_tag 'city', options_from_collection_for_select(City.all, 'slug', 'name', cookies[:city]), { include_blank: false }
 
     = yield
 
