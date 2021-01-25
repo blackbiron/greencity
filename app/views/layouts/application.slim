@@ -2,8 +2,8 @@ doctype html
 
 html
   head
-    title Greencity
-    meta name="viewport" content="width=device-width,initial-scale=1"
+    title Green City
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -11,15 +11,16 @@ html
     = javascript_include_tag 'application'
 
   body
-    = link_to 'post pictures'
+    nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-success
+      = link_to 'Green City', root_path, class: 'navbar-brand'
+      / = link_to 'post pictures'
 
-    | Choose your city
-    = select_tag 'city', options_from_collection_for_select(City.all, 'slug', 'name', cookies[:city]), { include_blank: false }
+    .nav-scroller.bg-white.shadow-sm
+      nav.nav.nav-underline aria-label="Secondary navigation"
+        - @country.cities.reorder(name: :asc).each do |city|
+          = link_to city.name, "/#{cookies[:country]}/#{city.slug}", class: "nav-link #{(city.slug == cookies[:city] ? 'active' : '')}"
 
-    = yield
-
-    javascript:
-      $('#city').on('change', function() {
-          var url = $(this).val();
-          location.href = url;
-      });
+    main.container-fluid
+      .row
+        .col
+          = yield
